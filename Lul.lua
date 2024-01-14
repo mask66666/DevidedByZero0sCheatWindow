@@ -1,5 +1,7 @@
 -- by DevidedByZer0
 
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
 local Window = Rayfield:CreateWindow({
     Name = "DevidedByZer0 Cheat Window",
     LoadingTitle = "DevidedByZer0 Cheat Window",
@@ -25,5 +27,4 @@ local Window = Rayfield:CreateWindow({
        Key = {"Hello"}
     }
  })
-
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local MianTab = Window:CreateTab("Home", nil)
