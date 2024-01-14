@@ -33,29 +33,10 @@ local MainSection = MianTab:CreateSection("Section Example")
 local Button = MianTab:CreateButton({
     Name = "Auto Clicker",
     Callback = function()
-        local Button = MianTab:CreateButton({
-            Name = "Auto Clicker",
-            Callback = function()
-                local isRunning = false
-        
-                -- Start auto-clicking loop
-                while not isRunning do
-                    task.wait(0.1)
-        
-                    local state = Button.Enabled
-                    Button.Enabled = not state
-        
-                    if state then
-                        isRunning = true
-                        local event = game:GetService("ReplicatedStorage").Events.Click3
-                        while isRunning do
-                            event:FireServer()
-                            task.wait(0.1)
-                        end
-                    end
-                end
-            end,
-        })
-        
+    while true do
+        task.wait(0.1)
+        game:GetService("ReplicatedStorage").Events.Click3:FireServer()
+
+    end
     end,
  })
