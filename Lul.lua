@@ -30,13 +30,9 @@ local Window = Rayfield:CreateWindow({
 local MianTab = Window:CreateTab("Home", nil)
 local MainSection = MianTab:CreateSection("Section Example")
 
-local Button = MianTab:CreateButton({
-    Name = "Auto Clicker",
+local Button = MainTab:CreateButton({
+    Name = "Clicker",
     Callback = function()
-        while true do
-            task.wait(1)
-            game:GetService("ReplicatedStorage").Events.Click3:FireServer()
-
-        end
+    -- The function that takes place when the button is pressed
     end,
 })
