@@ -35,26 +35,23 @@ local Button = MianTab:CreateButton({
     Callback = function()
         local Button = MianTab:CreateButton({
             Name = "Auto Clicker",
-            Enabled = false, -- Initially set to disabled
             Callback = function()
-                -- Toggle the button's enabled state
-                Button.Enabled = not Button.Enabled
+                local isRunning = false
         
-                if Button.Enabled then
-                    -- Start auto-clicking if enabled
-                    local isRunning = true
-                    while isRunning do
-                        task.wait(0.1)
-                        game:GetService("ReplicatedStorage").Events.Click3:FireServer()
+                -- Start auto-clicking loop
+                while not isRunning do
+                    task.wait(0.1)
         
-                        if not Button.Enabled then
-                            isRunning = false
+                    local state = Button.Enabled
+                    Button.Enabled = not state
+        
+                    if state then
+                        isRunning = true
+                        local event = game:GetService("ReplicatedStorage").Events.Click3
+                        while isRunning do
+                            event:FireServer()
+                            task.wait(0.1)
                         end
-                    end
-                else
-                    -- Stop auto-clicking if disabled
-                    while true do
-                        task.wait(0.1)
                     end
                 end
             end,
