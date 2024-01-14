@@ -29,3 +29,36 @@ local Window = Rayfield:CreateWindow({
  })
 local MianTab = Window:CreateTab("Home", nil)
 local MainSection = MianTab:CreateSection("Section Example")
+
+local Button = MianTab:CreateButton({
+    Name = "Auto Clicker",
+    Callback = function()
+        local Button = MianTab:CreateButton({
+            Name = "Auto Clicker",
+            Enabled = false, -- Initially set to disabled
+            Callback = function()
+                -- Toggle the button's enabled state
+                Button.Enabled = not Button.Enabled
+        
+                if Button.Enabled then
+                    -- Start auto-clicking if enabled
+                    local isRunning = true
+                    while isRunning do
+                        task.wait(0.1)
+                        game:GetService("ReplicatedStorage").Events.Click3:FireServer()
+        
+                        if not Button.Enabled then
+                            isRunning = false
+                        end
+                    end
+                else
+                    -- Stop auto-clicking if disabled
+                    while true do
+                        task.wait(0.1)
+                    end
+                end
+            end,
+        })
+        
+    end,
+ })
