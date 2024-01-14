@@ -26,17 +26,17 @@ local Window = Rayfield:CreateWindow({
        GrabKeyFromSite = false,
        Key = {"Hello"}
     }
- })
+})
 local MianTab = Window:CreateTab("Home", nil)
 local MainSection = MianTab:CreateSection("Section Example")
 
 local Button = MianTab:CreateButton({
     Name = "Auto Clicker",
     Callback = function()
-    while true do
-        task.wait(0.1)
-        game:GetService("ReplicatedStorage").Events.Click3:FireServer()
+        while true do
+            task.wait(1)
+            game:GetService("ReplicatedStorage").Events.Click3:FireServer()
 
-    end
+        end
     end,
- })
+})
