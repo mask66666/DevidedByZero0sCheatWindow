@@ -28,3 +28,4 @@ local Window = Rayfield:CreateWindow({
     }
  })
 local MianTab = Window:CreateTab("Home", nil)
+local MainSection = MianTab:CreateSection("Section Example")
